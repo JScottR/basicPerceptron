@@ -1,7 +1,7 @@
 import random
 import math
 
-alpha = 0.3
+alpha = 0.5
 
 def randomValue():
     return math.floor(random.random()*2) 
@@ -37,13 +37,13 @@ def newValues(nodeA,nodeB,nodeC):
     nodeC.value = randomValue()
 
 def main(nodeA,nodeB,nodeC,nodeD):
-    for i in range(0,8001):
+    for i in range(0,10001):
         if nodeA.value == 1 and nodeC.value == 1:
             expectedOutput = 1
         else:
             expectedOutput = 0
         sumInputs = nodeA.weight*nodeA.value + nodeB.weight*nodeB.value + nodeC.weight*nodeC.value + nodeD.weight*nodeD.value
-        output= 1/(1+math.exp(-sumInputs))
+        output = 1/(1+math.exp(-1*sumInputs))
         if i % 250 == 0:
             printNodes(nodeA,nodeB,nodeC,nodeD)
             print(output)
